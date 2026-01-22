@@ -72,13 +72,21 @@ app.get("/api/vibe", (req, res) => {
   res.json({ mood, ...vibe });
 });
 
-// POST /api/smash -> increases counter and returns the updated value
+// POST /api/smash -> aye nagcricrit na
 app.post("/api/smash", (req, res) => {
-  smashes += 1;
-  res.json({ smashes });
+  const isCrit = Math.random() < 0.25; // 0.25 = 25% chance
+  const increment = isCrit ? 5 : 1;
+  
+  smashes += increment;
+  
+  res.json({ 
+    smashes, 
+    isCrit, 
+    added: increment 
+  });
 });
 
-// GET /api/smashes -> returns current counter
+// GET /api/smashes -> returns current total
 app.get("/api/smashes", (req, res) => {
   res.json({ smashes });
 });
