@@ -21,17 +21,19 @@ app.use(express.json());
 
 // Data pools (random picks). You can customize these.
 const fortunes = [
-  "You will debug it in 5 minutes... after 55 minutes of panic.",
-  "Your next commit will be clean and meaningful.",
-  "A bug will disappear when you add one console.log().",
-  "You passed the vibe check today. 😎",
+  "Red is your lucky color of the day, VsCode will be willing to cooperate",
+  "Year of the horse: Try a horse-themed design for your code today.",
+  "Ang 5k mo gawin nating 5k ko !! Contact 09XX-XXXX-XXX now",
+  "Believe not in the Ai that helps you, but in the Mobile Data connection that doesn't disconnect",
 ];
 
 const jokes = [
-  "Why did the developer go broke? Because they used up all their cache.",
-  "My code has two moods: works or why-is-this-happening.",
-  "I told my program a joke... it just threw an exception.",
-];
+  "Anong tawag sa asong nakasuot ng salamin? Edi... 'Pug'-ita!",
+  "Bakit hindi nakalipad ang manok? Kasi may 'chicken' pox siya.",
+  "Anong paboritong kanta ng mga isda? 'Always' (I'll be there)... kasi 'I'm always chasing rainbows'?",
+  "Teacher: Juan, anong height mo? Juan: 5'4” po. Teacher: Bakit sa record 5'10”? Juan: Ay ma'am, yung 6 inches po ay 'pride'!"
+]; 
+/* Sir hindi po samin galing yung joke pramis */
 
 const vibeMap = {
   happy: { emoji: "😄", message: "Keep going - you're shipping greatness!" },
