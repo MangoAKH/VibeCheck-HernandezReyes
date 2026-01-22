@@ -43,6 +43,7 @@ const vibeMap = {
 
 // Smash counter (stored in memory for now)
 let smashes = 0;
+let critCount = 0; /* for critical hit display */
 
 // GET /api/fortune -> returns one random fortune
 app.get("/api/fortune", (req, res) => {
@@ -72,23 +73,27 @@ app.get("/api/vibe", (req, res) => {
   res.json({ mood, ...vibe });
 });
 
-// POST /api/smash -> aye nagcricrit na
+// POST /api/smash -> Now tracks and returns total crits
 app.post("/api/smash", (req, res) => {
-  const isCrit = Math.random() < 0.25; // 0.25 = 25% chance
+  const isCrit = Math.random() < 0.25;
   const increment = isCrit ? 5 : 1;
   
   smashes += increment;
+  if (isCrit) {
+    critCount += 1; // Increment the crit tracker
+  }
   
   res.json({ 
     smashes, 
     isCrit, 
-    added: increment 
+    added: increment,
+    totalCrits: critCount // Send the total count to the frontend
   });
 });
 
-// GET /api/smashes -> returns current total
+// GET /api/smashes -> returns both counters
 app.get("/api/smashes", (req, res) => {
-  res.json({ smashes });
+  res.json({ smashes, totalCrits: critCount });
 });
 
 // GET /api/secret?code=411L -> hidden message if code is correct
